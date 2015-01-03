@@ -1,0 +1,42 @@
+.copyright p {
+	font-size: 1.5rem;
+}
+.license p {
+	padding: 1rem;
+	font-size: 1.5rem;
+}
+.license ul {
+	padding: 1rem;
+}
+.license ul li {
+	margin-left: 1em;
+	font-size: 1.5rem;
+	list-style: disc;
+}
+#no-credentials {
+	display: flex;
+	align-items: center;
+	height: calc(100% - 5rem);
+	margin: 0 1.5rem;
+}
+#no-credentials p {
+	color: #858585;
+	font-size: 15px;
+  line-height: 20px;
+}
+#no-credentials .icon {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	background: url('../bower_components/building-blocks/style/headers/images/icons/add.png') no-repeat scroll center center / 3rem auto #858585;
+}
+div {
+	height: 100%; /* fix for automatically inserted view element by Ember.js */
+}
+[data-type="list"] li {
+	padding: 0;
+}
+[data-type="list"] li:after {
+	border: 0;
+}

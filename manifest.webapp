@@ -1,0 +1,15 @@
+{
+	"name": "Authenticator",
+	"description": "Authenticator app for one-time passwords",
+	"launch_path": "/index.html",
+	"icons": {
+		"512": "/img/icon-512.png",
+		"128": "/img/icon-128.png"
+	},
+	"developer": {
+		"name": "Tim van de Kamp",
+		"url": "https://github.com/timothymctim/authenticator"
+	},
+	"version": "1.0.0",
+	"default_locale": "en"
+}
