@@ -11,10 +11,10 @@ zip:
 		bower_components/building-blocks/util.css \
 		bower_components/building-blocks/fonts.css \
 		style/ \
-		bower_components/jquery/dist/jquery.js \
-		bower_components/handlebars/handlebars.js \
-		bower_components/ember/ember.js \
-		bower_components/ember-data/ember-data.js \
+		bower_components/jquery/dist/jquery.min.js \
+		bower_components/handlebars/handlebars.min.js \
+		bower_components/ember/ember.min.js \
+		bower_components/ember-data/ember-data.min.js \
 		bower_components/ember-localstorage-adapter/localstorage_adapter.js \
 		bower_components/jssha/src/sha.js \
 		js/ \
