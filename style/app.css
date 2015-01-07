@@ -1,4 +1,7 @@
 .copyright p {
+	padding: 0 1.5rem;
+}
+.copyright p,.copyright ul li {
 	font-size: 1.5rem;
 }
 .license p {

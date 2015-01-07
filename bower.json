@@ -17,6 +17,7 @@
   "ignore": [
       "**/.*",
       "bower_components",
+      "screenshots",
       "tests"
   ],
   "dependencies": {
