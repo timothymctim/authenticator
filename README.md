@@ -13,6 +13,7 @@ The options for adding a new token generator (a credential) are:
 * output length (how many digits should the token consists of)
 * time offset (how many seconds offset should there be with respect to
   Unix time)
+
 To achieve the look and feel of a Firefox OS app, Mozilla's [Building
 Blocks](https://developer.mozilla.org/en-US/Apps/Design/Firefox_OS_building_blocks)
 is used.
