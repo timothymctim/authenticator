@@ -18,6 +18,9 @@ zip:
 		bower_components/ember-localstorage-adapter/localstorage_adapter.js \
 		bower_components/jssha/src/sha.js \
 		js/ \
+		bower_components/ember-i18n/lib/i18n.js \
+		bower_components/ember-i18n/lib/i18n-plurals.js \
+		locales/ \
 		img/icon-*.png \
 		index.html \
 		manifest.webapp

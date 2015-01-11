@@ -4,6 +4,7 @@ App.Router.map(function() {
 		this.route('app');
 		this.route('emberJs');
 		this.route('buildingBlocks');
+		this.route('emberI18n');
 		this.route('jsSHA');
 		this.route('emberData');
 		this.route('emberLocalStorage');
@@ -117,6 +118,21 @@ App.LicenseEmberLocalStorageRoute = Ember.Route.extend({
 
 	renderTemplate: function(controller, model) {
 		this.render('license/MIT', {
+			controller: 'license',
+			model: model
+		});
+	}
+});
+App.LicenseEmberI18nRoute = Ember.Route.extend({
+	model: function() {
+		return {
+			year: 2011,
+			owner: 'James A. Rosen'
+		};
+	},
+
+	renderTemplate: function(controller, model) {
+		this.render('license/Apache-2', {
 			controller: 'license',
 			model: model
 		});

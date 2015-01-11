@@ -5,12 +5,8 @@
   <meta name="theme-color" data-statuscolor="#ff7d14" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
   <title>Authenticator</title>
-  <!-- Localization -->
   <link rel="manifest" href="manifest.webapp">
-  <!--
-   <link rel="localization" href="locales/email.{locale}.properties">
-   <link rel="localization" href="/shared/locales/date/date.{locale}.properties">
-  -->
+
   <link rel="stylesheet" type="text/css" href="bower_components/building-blocks/style/buttons.css">
   <link rel="stylesheet" type="text/css" href="bower_components/building-blocks/style/headers.css">
   <link rel="stylesheet" type="text/css" href="bower_components/building-blocks/style/input_areas.css">
@@ -132,45 +128,23 @@
        <li class="copyright">
         <p>
          <a target="_blank" {{bind-attr href=developer.url}}>{{unbound developer.name}}</a><br/>
-         Version: {{unbound version}}<br/>
-         {{#link-to "license.app"}}License{{/link-to}}
+         {{t "about.version" version=version}}<br/>
+         {{#link-to "license.app"}}{{t "about.license"}}{{/link-to}}
         </p>
        </li>
       </ul>
      </article>
      <article class="copyright">
-      <p>This app includes the following packages.</p>
+      <p>{{t "about.app-includes"}}</p>
       <ul>
+       {{#each package in thirdPartySoftware}}
        <li>
         <p>
-         <a href="http://emberjs.com/" target="_blank">Ember.JS</a> by Yehuda Katz, Tom Dale, and Ember.js contributors
-         ({{#link-to "license.emberJs"}}license{{/link-to}})
+         {{t "about.third-party-software" linkNameBinding=package.name linkUrlBinding=package.url authorBinding=package.author}}
+         ({{#link-to package.link}}{{t "about.third-party-license"}}{{/link-to}})
         </p>
        </li>
-       <li>
-        <p>
-         <a href="http://buildingfirefoxos.com/" target="_blank">Building Blocks library</a> by the Mozilla Foundation
-         ({{#link-to "license.buildingBlocks"}}license{{/link-to}})
-        </p>
-       </li>
-       <li>
-        <p>
-         <a href="https://github.com/Caligatio/jsSHA" target="_blank">jsSHA library</a> by Brian Turek
-         ({{#link-to "license.jsSHA"}}license{{/link-to}})
-        </p>
-       </li>
-       <li>
-        <p>
-         <a href="https://github.com/emberjs/data" target="_blank">Ember Data library</a> by LivingSocial Inc., Tilde, Inc. and contributors
-         ({{#link-to "license.emberData"}}license{{/link-to}})
-        </p>
-       </li>
-       <li>
-        <p>
-         <a href="https://github.com/kurko/ember-localstorage-adapter" target="_blank">Ember Data Local Storage Adapter library</a> by Ryan Florence
-         ({{#link-to "license.emberLocalStorage"}}license{{/link-to}})
-        </p>
-       </li>
+       {{/each}}
       </ul>
      </article>
     </section>
@@ -182,7 +156,7 @@
      <menu type="toolbar">
       {{#link-to "credentials.new"}}<span class="icon icon-add">add</span>{{/link-to}}
      </menu>
-     <h1 {{action "about"}}>Credentials</h1>
+     <h1 {{action "about"}}>{{t "index.header"}}</h1>
     </header>
     {{#if oneTimer}}
     <progress {{bind-attr value="progress"}}></progress>
@@ -194,7 +168,7 @@
         {{#each credential in controller}}
          <li>
           {{#link-to 'credentials.edit' credential}}
-           <p>{{#if credential.token}}{{credential.token}}{{else}}Oeps! Something went wrong.{{/if}}</p>
+           <p>{{#if credential.token}}{{credential.token}}{{else}}{{t "app.error"}}{{/if}}</p>
            <p>{{credential.title}}</p>
            {{#unless oneTimer}}
            <progress {{bind-attr value="credential.progress"}}></progress>
@@ -206,7 +180,7 @@
       </section>
      {{else}}
       <article id="no-credentials">
-       <p>Add a new credential by selecting the <span class="icon">+</span> at the right top.</p>
+       <p>{{t "index.add-new-credential"}}</p>
       </article>
      {{/if}}
     </section>
@@ -216,26 +190,26 @@
    <article>
     <ul>
      <li class="vbox">
-      {{input type="text" name="title" placeholder="Credential name" required="" value=title}}
+      {{input type="text" name="title" placeholderTranslation="form.credential-name" required="" value=title}}
       {{#unless editMode}}
-       {{input type="text" name="key" placeholder="Shared key" required="" pattern="^[A-Za-z0-9 -]{2,}(=?|={3,4}|={6})$" value=key}}
+       {{input type="text" name="key" placeholderTranslation="form.credential-key" required="" pattern="^[A-Za-z0-9 -]{2,}(=?|={3,4}|={6})$" value=key}}
       {{/unless}}
      </li>
     </ul>
    </article>
    <article>
-    <header>Advanced</header>
+    <header>{{t "form.advanced"}}</header>
     <ul>
      <li class="vbox">
-      <label>Time step (seconds)</label>
+      <label>{{t "form.time-step"}}</label>
       {{input type="number" value=timeStep min="1"}}
      </li>
      <li class="vbox">
-      <label>Hashing algorithm</label>
+      <label>{{t "form.hash-algorithm"}}</label>
       {{view "select" content=hashes value=hash}}
      </li>
      <li class="vbox">
-      <label>Output length</label>
+      <label>{{t "form.output-length"}}</label>
       {{view "select"
           content=codeLengths
           value=codeLength
@@ -243,7 +217,7 @@
           optionLabelPath="content.label"}}
      </li>
      <li class="vbox">
-      <label>Time offset (seconds)</label>
+      <label>{{t "form.time-offset"}}</label>
       {{input type="number" value=offset}}
      </li>
     </ul>
@@ -253,8 +227,8 @@
    <section role="region" class="vbox fit">
     <header>
      <button {{action "cancel"}}><span class="icon icon-close">close</span></button>
-     <menu type="toolbar"><button {{action "submit"}} {{bind-attr disabled=isInvalid}}>Done</button></menu>
-     <h1>Add credential</h1>
+     <menu type="toolbar"><button {{action "submit"}} {{bind-attr disabled=isInvalid}}>{{t "done"}}</button></menu>
+     <h1>{{t "credential.add"}}</h1>
     </header>
     <section class="gaia-list fit scroll sticky">
      {{view "credentialForm"}}
@@ -265,13 +239,13 @@
    <section role="region" class="vbox fit">
     <header>
      <button {{action "cancel"}}><span class="icon icon-close">close</span></button>
-     <menu type="toolbar"><button {{action "submit"}} {{bind-attr disabled=isInvalid}}>Update</button></menu>
-     <h1>Edit credential</h1>
+     <menu type="toolbar"><button {{action "submit"}} {{bind-attr disabled=isInvalid}}>{{t "update"}}</button></menu>
+     <h1>{{t "credential.edit"}}</h1>
     </header>
     <section role="region" class="gaia-list fit scroll sticky">
      {{view "credentialForm"}}
      <footer class="gaia-footer">
-      <button class="danger" {{action "delete"}}>Delete credential</button>
+      <button class="danger" {{action "delete"}}>{{t "credential.delete"}}</button>
      </footer>
     </section>
    </section>
@@ -281,7 +255,10 @@
   <script type="text/javascript" src="bower_components/ember/ember.min.js"></script>
   <script type="text/javascript" src="bower_components/ember-data/ember-data.min.js"></script>
   <script type="text/javascript" src="bower_components/ember-localstorage-adapter/localstorage_adapter.js"></script>
+  <script type="text/javascript" src="bower_components/ember-i18n/lib/i18n.js"></script>
+  <script type="text/javascript" src="bower_components/ember-i18n/lib/i18n-plurals.js"></script>
   <script type="text/javascript" src="bower_components/jssha/src/sha.js"></script>
+  <script type="text/javascript" src="locales/translations.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/application.js"></script>
   <script type="text/javascript" src="js/router.js"></script>

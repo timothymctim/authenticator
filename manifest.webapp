@@ -12,5 +12,11 @@
 		"url": "https://github.com/timothymctim/authenticator"
 	},
 	"version": "1.0.0",
-	"default_locale": "en"
+	"default_locale": "en",
+	"locales": {
+		"nl": {
+			"name": "Authenticator",
+			"description": "Twee-factor-authenticatie app om éénmalige toegangscodes te genereren."
+		}
+	}
 }

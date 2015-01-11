@@ -3,9 +3,9 @@ App.CredentialsEditController = Ember.ObjectController.extend({
 	isInvalid: false,
 	hashes: ['SHA-1', 'SHA-256', 'SHA-512'],
 	codeLengths: [
-		{value: 6, label: 6 + ' digits'},
-		{value: 7, label: 7 + ' digits'},
-		{value: 8, label: 8 + ' digits'}
+		{value: 6, label: Ember.I18n.t('digit', { count: 6 })},
+		{value: 7, label: Ember.I18n.t('digit', { count: 7 })},
+		{value: 8, label: Ember.I18n.t('digit', { count: 8 })}
 	],
 
 	formChanged: function() {
