@@ -20,6 +20,9 @@ is used.
 
 ![Screen shot of the main user interface.](screenshots/main.png
 "Default view with a few added credentials")
+![Screen shot of the main user interface showing credentials with
+different time steps.](screenshots/custom.png "Default view, but now the
+credentials have different time steps")
 ![Screen shot showing several options.](screenshots/add.png
 "View for adding a new credential")
 
@@ -32,6 +35,6 @@ dependencies.
 
 Generate the app icon
 =====================
-You can convert the app icon's SVG into a PNG using Inkscape.
+You can convert the app icons from SVG into PNG using Inkscape.
 
     $ for size in 60 128 512;do inkscape -z -e img/icon-$size.png -w $size -h $size img/icon.svg;done
