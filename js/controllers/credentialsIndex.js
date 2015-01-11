@@ -18,8 +18,30 @@ App.CredentialsIndexController = Ember.ArrayController.extend({
 			this.set('unixTime', unixTime);
 		}
 
-		Ember.run.later(this, this.tick, 100);
+		Ember.run.later(this, this.tick, 75);
 	},
+
+	progress: function() {
+		if (this.get('oneTimer')) {
+			return this.objectAt(0).get('progress');
+		} else {
+			return false;
+		}
+	}.property('@each.progress'),
+
+	oneTimer: function() {
+		var items = this.get('length');
+
+		if (items < 1) {
+			return false;
+		} else {
+			var thisTimeStep = this.objectAt(0).get('timeStep');
+
+			return this.every(function(item) {
+				return thisTimeStep == item.get('timeStep');
+			});
+		}
+	}.property('@each.timeStep'),
 
 	actions: {
 		about: function() {

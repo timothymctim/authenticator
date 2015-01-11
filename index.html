@@ -184,6 +184,9 @@
      </menu>
      <h1 {{action "about"}}>Credentials</h1>
     </header>
+    {{#if oneTimer}}
+    <progress {{bind-attr value="progress"}}></progress>
+    {{/if}}
     <section class="gaia-list fit scroll sticky">
      {{#if controller.length}}
       <section data-type="list">
@@ -193,7 +196,9 @@
           {{#link-to 'credentials.edit' credential}}
            <p>{{#if credential.token}}{{credential.token}}{{else}}Oeps! Something went wrong.{{/if}}</p>
            <p>{{credential.title}}</p>
+           {{#unless oneTimer}}
            <progress {{bind-attr value="credential.progress"}}></progress>
+           {{/unless}}
           {{/link-to}}
          </li>
         {{/each}}
