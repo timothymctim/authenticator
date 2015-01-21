@@ -11,7 +11,7 @@
 		"name": "Tim van de Kamp",
 		"url": "https://github.com/timothymctim/authenticator"
 	},
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"default_locale": "en",
 	"locales": {
 		"nl": {
